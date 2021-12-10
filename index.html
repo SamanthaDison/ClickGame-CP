@@ -57,11 +57,17 @@
                 </div>
                 <div class="col-4  d-flex align-content-center">
                     <!-- CLICK IMG HERE -->
-                    <img class="img-fluid " src="espresso.png" alt="espresso cup">
+                    <img onclick="mine()" class="img-fluid" src="espresso.png" alt="espresso cup">
                 </div>
-                <div class="col-4">
+                <div class="col-4 ">
                     <!-- INVENTORY CARD HERE -->
-                    <h1>TEST 3</h1>
+                    <div class="bg-dark text-light h-30 m-3">
+                        <!-- <div id="inventory"></div> -->
+                        <p>Espresso:<span id="espresso-count">0</span></p>
+                        <p onclick="buyBeanGrinder()">Bean Grinders: <span id="bGrind">0</span></p>
+                        <p>Baristas: <span>0</span></p>
+                        <p>Managers: <span>0</span></p>
+                    </div>
                 </div>
             </div>
             <div class="row">
