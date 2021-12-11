@@ -27,7 +27,8 @@ let autoUpgrades = {
 
 
 
-let coffee = 0
+let coffee = 701
+let upgrades = Object.assign([], clickUpgrades, autoUpgrades)
 
 
 function mine() {
@@ -39,33 +40,46 @@ function mine() {
         }
     }
     drawInventory()
-}
 
+}
 
 function drawInventory() {
     document.getElementById('espresso-count').innerText = coffee
-    let template = ''
-    for (const key in clickUpgrades) {
-        const clickUpgrade = clickUpgrades[key];
-        document.getElementById(key).innerText = clickUpgrade.quantity
+    for (const key in upgrades) {
+        const upgrade = upgrades[key];
+        document.getElementById(key).innerText = upgrade.quantity
     }
 }
 
-
-// ASK HOW BEST TO TEMPLATE THIS????? DO I ASSIGN ID? 
-
-// document.getElementById('machine').innerText = clickUpgrades.espressoMachine.quantity
-
-function buyClickUpgrade(upgradeKey) {
-    const clickUpgrade = clickUpgrades[upgradeKey];
-    if (coffee >= clickUpgrade.price) {
-        clickUpgrade.quantity += 1
-        coffee -= clickUpgrade.price
+function buyUpgrade(upgradeKey) {
+    const upgrade = upgrades[upgradeKey];
+    if (coffee >= upgrade.price) {
+        upgrade.quantity += 1
+        coffee -= upgrade.price
     }
-
-    // ASK HOW DO I RECURSE THIS FUNCTION TO INCLUDE BOTH DICTIONARIES?
     drawInventory()
 }
+
+
+function drawPrice() {
+    document.getElementById(`test`).innerText = clickUpgrades.beanGrinder.price
+}
+
+function increasePrice() {
+    if (clickUpgrades.beanGrinder.quantity >= 1) {
+        clickUpgrades.beanGrinder.price += clickUpgrades.beanGrinder.price * 1
+
+    }
+    drawPrice()
+}
+
+// function buyButton() {
+//     const
+//     if (coffee >= ) {
+
+//     }
+// }
+
 
 function collectAutoUpgrades() {
     for (const key in autoUpgrades) {
@@ -85,8 +99,44 @@ function startInterval() {
 
 startInterval()
 
-// drawInventory()
+
+
+
+
+// ..................OLD FUNCTIONS....................//
 
 // if (clickUpgrades.beanGrinder.quantity >= 1) {
 //     coffee += 1 + clickUpgrades.beanGrinder.quantity * 1
+// }
+
+// function drawAutoInventory() {
+//     let template = ''
+//     for (const key in autoUpgrades) {
+//         const autoUpgrade = autoUpgrades[key];
+//         document.getElementById(key).innerText = autoUpgrade.quantity
+//     }
+
+// }
+
+// ASK HOW BEST TO TEMPLATE THIS????? DO I ASSIGN ID? 
+
+// document.getElementById('machine').innerText = clickUpgrades.espressoMachine.quantity
+
+// function buyClickUpgrade(upgradeKey) {
+//     const clickUpgrade = clickUpgrades[upgradeKey];
+//     if (coffee >= clickUpgrade.price) {
+//         clickUpgrade.quantity += 1
+//         coffee -= clickUpgrade.price
+//     }
+//     // ASK HOW DO I RECURSE THIS FUNCTION TO INCLUDE BOTH DICTIONARIES?
+//     drawInventory()
+// }
+
+// function buyAutoUpgrade(upgradeKey) {
+//     const autoUpgrade = autoUpgrades[upgradeKey];
+//     if (coffee >= autoUpgrade.price) {
+//         autoUpgrade.quantity += 1
+//         coffee -= autoUpgrade.price
+//     }
+//     drawAutoInventory()
 // }

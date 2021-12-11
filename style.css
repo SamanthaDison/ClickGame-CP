@@ -3,12 +3,31 @@
     flex-direction: column;
 } */
 
+
 body{
     min-height: 100vh;
     display: flex;
     flex-direction: column;
+font-family: 'Patrick Hand SC', cursive;
 }
+
+header{
+    text-shadow: 2px;
+}
+
 
 main{
     flex-grow: 1;
+    background-image: url('https://i.pinimg.com/originals/99/cd/09/99cd0925c516b5d0a740dffd03c3e0df.gif');
+    object-fit: cover;
+
+}
+.cup{
+    cursor: pointer;
+
+}
+
+.cup:hover{
+    transform: scale(1.03);
+    box-shadow: 10px yellow;
 }

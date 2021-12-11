@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Patrick+Hand+SC&display=swap" rel="stylesheet">
 
 </html>
 </head>
@@ -44,7 +44,7 @@
     <header>
         <div class="container-fluid">
             <div class="row">
-                <div class="col-12 texte text-center text-light">
+                <div class="col-12 texte text-center">
                     <h1>BARISTA SIMULATOR</h1>
                 </div>
             </div>
@@ -60,25 +60,35 @@
                 </div>
                 <div class="col-4  d-flex align-content-center">
                     <!-- CLICK IMG HERE -->
-                    <img onclick="mine()" class="img-fluid" src="espresso.png" alt="espresso cup">
+                    <img onclick="mine()" class="img-fluid cup" src="espresso.png" alt="espresso cup">
                 </div>
                 <div class="col-4 ">
                     <!-- INVENTORY CARD HERE -->
-                    <div class="bg-dark text-light h-30 m-3">
+                    <div class="bg-dark text-light h-30 m-3 rounded">
                         <!-- <div id="inventory"></div> -->
                         <p>Espresso:<span id="espresso-count">0</span></p>
-                        <p onclick="buyClickUpgrade(`beanGrinder`)">Bean Grinders: <span id="beanGrinder">0</span></p>
-                        <p onclick="buyClickUpgrade(`espressoMachine`)">Espresso Machines: <span
-                                id="espressoMachine">0</span>
+                        <p>Bean Grinders: <span id="beanGrinder">0</span></p>
+                        <p>Espresso Machines: <span id="espressoMachine">0</span>
                         </p>
-                        <p>Baristas: <span id="">0</span></p>
-                        <p>Managers: <span>0</span></p>
+                        <p>Baristas: <span id="barista">0</span></p>
+                        <p>Managers: <span id="manager">0</span></p>
                     </div>
                 </div>
             </div>
-            <div class="row">
+            <div class="row align-content-end  mt-5 p-3">
                 <div class="col-6">
                     <!-- STORE CARD HERE -->
+                    <div class="bg-dark text-light h-30 justify-content-evenly align-content-center rounded">
+                        <div class="d-flex justify-content-evenly">
+                            <button onclick="buyUpgrade(`beanGrinder`); increasePrice()">BUY BEAN GRINDER <span
+                                    id="test">100</span></button>
+                            <button onclick="buyUpgrade(`espressoMachine`)">BUY ESPRESSO MACHINE</button>
+                        </div>
+                        <div class="d-flex justify-content-evenly pt-3">
+                            <button onclick="buyUpgrade(`barista`)">HIRE BARISTA</button>
+                            <button onclick="buyUpgrade(`manager`)">HIRE MANAGER</button>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
