@@ -14,7 +14,7 @@ let clickUpgrades = {
 let autoUpgrades = {
     barista: {
         price: 600,
-        quantity: 1,
+        quantity: 0,
         multiplier: 20,
     },
     manager: {
@@ -27,7 +27,7 @@ let autoUpgrades = {
 
 
 
-let coffee = 601
+let coffee = 0
 
 
 function mine() {
