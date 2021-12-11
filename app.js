@@ -14,7 +14,7 @@ let clickUpgrades = {
 let autoUpgrades = {
     barista: {
         price: 600,
-        quantity: 0,
+        quantity: 1,
         multiplier: 20,
     },
     manager: {
@@ -27,7 +27,7 @@ let autoUpgrades = {
 
 
 
-let coffee = 101
+let coffee = 601
 
 
 function mine() {
@@ -38,31 +38,54 @@ function mine() {
             coffee += clickUpgrade.quantity * clickUpgrade.multiplier
         }
     }
-    inventory()
+    drawInventory()
 }
 
 
-function inventory() {
+function drawInventory() {
     document.getElementById('espresso-count').innerText = coffee
-    document.getElementById('bGrind').innerText = clickUpgrades.beanGrinder.quantity
-}
-
-function buyClickUpgrade() {
+    let template = ''
     for (const key in clickUpgrades) {
         const clickUpgrade = clickUpgrades[key];
-
+        document.getElementById(key).innerText = clickUpgrade.quantity
     }
-
-
-    // if (coffee >= 100) {
-    //     clickUpgrades.beanGrinder.quantity += 1
-    //     coffee -= 100
-    //     console.log('getbeans', clickUpgrades.beanGrinder.quantity)
-    //     inventory()
-    // }
 }
 
-inventory()
+
+// ASK HOW BEST TO TEMPLATE THIS????? DO I ASSIGN ID? 
+
+// document.getElementById('machine').innerText = clickUpgrades.espressoMachine.quantity
+
+function buyClickUpgrade(upgradeKey) {
+    const clickUpgrade = clickUpgrades[upgradeKey];
+    if (coffee >= clickUpgrade.price) {
+        clickUpgrade.quantity += 1
+        coffee -= clickUpgrade.price
+    }
+
+    // ASK HOW DO I RECURSE THIS FUNCTION TO INCLUDE BOTH DICTIONARIES?
+    drawInventory()
+}
+
+function collectAutoUpgrades() {
+    for (const key in autoUpgrades) {
+        const autoUpgrade = autoUpgrades[key];
+        if (autoUpgrade.quantity >= 1) {
+            coffee += autoUpgrade.quantity * autoUpgrade.multiplier
+        }
+    }
+    drawInventory()
+    console.log('we vibin')
+}
+
+function startInterval() {
+    setInterval(collectAutoUpgrades, 3000);
+}
+
+
+startInterval()
+
+// drawInventory()
 
 // if (clickUpgrades.beanGrinder.quantity >= 1) {
 //     coffee += 1 + clickUpgrades.beanGrinder.quantity * 1
