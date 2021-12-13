@@ -27,7 +27,7 @@ let autoUpgrades = {
 
 
 
-let coffee = 700
+let coffee = 0
 let upgrades = Object.assign([], clickUpgrades, autoUpgrades)
 
 
