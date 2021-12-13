@@ -27,7 +27,7 @@ let autoUpgrades = {
 
 
 
-let coffee = 701
+let coffee = 700
 let upgrades = Object.assign([], clickUpgrades, autoUpgrades)
 
 
@@ -43,12 +43,30 @@ function mine() {
 
 }
 
+// function drawStats() {
+//     let template = ''
+//     for (const key in upgrades) {
+//         const upgrade = upgrades[key]
+//         template += ``
+//     }
+// }
+
+// function drawButton() {
+//     let button = document.getElementById(beanGrinder - button)
+//     if (coffee >= upgrades.beanGrinder.price) {
+//         button.disabled = false
+//     } else {
+//         button.disabled = true
+//     }
+// }
+
 function drawInventory() {
     document.getElementById('espresso-count').innerText = coffee
     for (const key in upgrades) {
         const upgrade = upgrades[key];
         document.getElementById(key).innerText = upgrade.quantity
     }
+
 }
 
 function buyUpgrade(upgradeKey) {
@@ -58,19 +76,25 @@ function buyUpgrade(upgradeKey) {
         coffee -= upgrade.price
     }
     drawInventory()
+    increasePrice(upgradeKey)
+    drawPrice(upgradeKey)
 }
 
 
-function drawPrice() {
-    document.getElementById(`test`).innerText = clickUpgrades.beanGrinder.price
+
+function drawPrice(upgradeKey) {
+    const upgrade = upgrades[upgradeKey]
+    document.getElementById(`${upgradeKey}-price`).innerText = upgrade.price
 }
 
-function increasePrice() {
-    if (clickUpgrades.beanGrinder.quantity >= 1) {
-        clickUpgrades.beanGrinder.price += clickUpgrades.beanGrinder.price * 1
 
+function increasePrice(upgradeKey) {
+    const upgrade = upgrades[upgradeKey];
+    if (upgrade.quantity >= 1) {
+        upgrade.price += upgrade.price
+        console.log(upgrade.price)
     }
-    drawPrice()
+    drawPrice(upgradeKey)
 }
 
 // function buyButton() {
@@ -86,10 +110,10 @@ function collectAutoUpgrades() {
         const autoUpgrade = autoUpgrades[key];
         if (autoUpgrade.quantity >= 1) {
             coffee += autoUpgrade.quantity * autoUpgrade.multiplier
+            console.log('we vibin', autoUpgrade.multiplier)
         }
     }
     drawInventory()
-    console.log('we vibin')
 }
 
 function startInterval() {
@@ -98,7 +122,6 @@ function startInterval() {
 
 
 startInterval()
-
 
 
 

@@ -44,8 +44,8 @@
     <header>
         <div class="container-fluid">
             <div class="row">
-                <div class="col-12 texte text-center">
-                    <h1>BARISTA SIMULATOR</h1>
+                <div class="col-12 text-light text-center">
+                    <h1><b>BARISTA SIMULATOR</b></h1>
                 </div>
             </div>
         </div>
@@ -62,9 +62,9 @@
                     <!-- CLICK IMG HERE -->
                     <img onclick="mine()" class="img-fluid cup" src="espresso.png" alt="espresso cup">
                 </div>
-                <div class="col-4 ">
+                <div class="col-4 mt-5 align-content-center">
                     <!-- INVENTORY CARD HERE -->
-                    <div class="bg-dark text-light h-30 m-3 rounded">
+                    <div class="bg-dark text-light h-30 m-3 rounded shadow border border-light">
                         <!-- <div id="inventory"></div> -->
                         <p>Espresso:<span id="espresso-count">0</span></p>
                         <p>Bean Grinders: <span id="beanGrinder">0</span></p>
@@ -75,18 +75,21 @@
                     </div>
                 </div>
             </div>
-            <div class="row align-content-end  mt-5 p-3">
-                <div class="col-6">
+            <div class="row align-content-end mb-0 p-3">
+                <div class="col-6 store-col">
                     <!-- STORE CARD HERE -->
-                    <div class="bg-dark text-light h-30 justify-content-evenly align-content-center rounded">
-                        <div class="d-flex justify-content-evenly">
-                            <button onclick="buyUpgrade(`beanGrinder`); increasePrice()">BUY BEAN GRINDER <span
-                                    id="test">100</span></button>
-                            <button onclick="buyUpgrade(`espressoMachine`)">BUY ESPRESSO MACHINE</button>
+                    <div class="bg-dark border border-light shadow store-card align-content-center rounded ">
+                        <div class="d-flex justify-content-evenly pb-2">
+                            <button id="beanGrinder-button" onclick="buyUpgrade(`beanGrinder`)">BUY BEAN
+                                GRINDER <span id="beanGrinder-price">100</span></button>
+                            <button onclick="buyUpgrade(`espressoMachine`)">BUY ESPRESSO MACHINE <span
+                                    id="espressoMachine-price">300</span></button>
                         </div>
                         <div class="d-flex justify-content-evenly pt-3">
-                            <button onclick="buyUpgrade(`barista`)">HIRE BARISTA</button>
-                            <button onclick="buyUpgrade(`manager`)">HIRE MANAGER</button>
+                            <button onclick="buyUpgrade(`barista`)">HIRE BARISTA <span
+                                    id="barista-price">600</span></button>
+                            <button onclick="buyUpgrade(`manager`)">HIRE MANAGER <span
+                                    id="manager-price">1000</span></button>
                         </div>
                     </div>
                 </div>
